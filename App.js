@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, StyleSheet, Text, TextInput, View, Image, TouchableOpacity } from 'react-native';
+import { Button, StyleSheet, Text, TextInput, View, Image, TouchableOpacity, FlatList } from 'react-native';
 import image from './assets/icon.png'
 
 export default function App() {
