@@ -11,7 +11,7 @@ const DATA = [
   },
   {
     id: 2,
-    title: 'Morten Lava Burger',
+    title: 'Molten Lava Burger',
     rating: 5,
     price: "$10",
     image: require('../assets/img2.jpeg')
@@ -45,7 +45,7 @@ const FlatListComp = () => {
       data={DATA}
       horizontal={true}
       renderItem={({ item }) => (
-        <View style={{ flex: 1, marginHorizontal: 3, padding: 3, backgroundColor:'white',borderRadius:15,marginVertical:10}}>
+        <View style={{ flex: 1, marginHorizontal: 3, padding: 3, backgroundColor: 'white', borderRadius: 15, marginVertical: 10 }}>
           <View style={{ flex: 0.2 }}>
             <View style={{ flex: 1, flexDirection: 'row' }}>
               <Text style={{ flex: 0.50, fontSize: 20, fontWeight: "bold", color: 'yellow' }}>	&#10084;
@@ -58,7 +58,7 @@ const FlatListComp = () => {
             <Image source={item.image} style={{ width: 120, height: 120, alignSelf: "center" }} />
           </View>
           <View style={{ flex: 0.2 }}>
-            <View style={{ flex: 1 , alignItems:"center"}}>
+            <View style={{ flex: 1, alignItems: "center" }}>
               <View style={{ flex: 0.50 }}>
                 <Text style={{ fontSize: 18, fontWeight: "bold", color: 'black' }}>{item.title}</Text>
               </View>
