@@ -7,35 +7,35 @@ const DATA = [
     title: 'Morten Lava Burger',
     rating: 5,
     price: "$10",
-    image: require('../assets/icon.png')
+    image: require('../assets/img1.jpeg')
   },
   {
     id: 2,
     title: 'Morten Lava Burger',
     rating: 5,
     price: "$10",
-    image: require('../assets/icon.png')
+    image: require('../assets/img2.jpeg')
   },
   {
     id: 3,
     title: 'Crispy Chicken Burger',
     rating: 5,
     price: "$10",
-    image: require('../assets/icon.png')
+    image: require('../assets/img3.jpeg')
   },
   {
     id: 4,
     title: 'Grilled Chicken Burger',
     rating: 5,
     price: "$10",
-    image: require('../assets/icon.png')
+    image: require('../assets/img4.jpeg')
   },
   {
     id: 5,
     title: 'Simple Burger',
     rating: 5,
     price: "$10",
-    image: require('../assets/icon.png')
+    image: require('../assets/img2.jpeg')
   },
 ];
 
