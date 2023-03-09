@@ -9,8 +9,8 @@ const LoginScreen = () => {
                 <Text style={styles.loginText}>Login Here</Text>
             </View>
             <View style={{ flex: 0.50, marginTop: 100 }}>
-                <TextInput style={styles.input} placeholder="Email" />
-                <TextInput secureTextEntry={true} style={styles.input} placeholder="Password" />
+                <TextInput style={styles.input} placeholder="Enter Email" />
+                <TextInput secureTextEntry={true} style={styles.input} placeholder="Enter Password" />
 
             </View>
             <View style={{ flex: 0.20 }}>
