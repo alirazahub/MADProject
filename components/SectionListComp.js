@@ -1,5 +1,4 @@
-import { StatusBar } from 'expo-status-bar';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, FlatList, Alert, SectionList } from 'react-native';
 
 export default function SectionListComp() {
