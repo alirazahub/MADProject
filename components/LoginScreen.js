@@ -6,7 +6,7 @@ const LoginScreen = () => {
         <View style={{ flex: 1 }}>
             <View style={{ flex: 0.30 }}>
                 <Image source={image} style={styles.image} />
-                <Text style={styles.loginText}>Login Here</Text>
+                <Text style={styles.loginText}>You Can Login Here</Text>
             </View>
             <View style={{ flex: 0.50, marginTop: 100 }}>
                 <TextInput style={styles.input} placeholder="Enter Email" />
