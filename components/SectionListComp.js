@@ -39,6 +39,11 @@ export default function SectionListComp() {
                 title: 'Sweets',
                 data: [{ key: 18, title: 'Sweet-1' }, { key: 19, title: 'Sweet-2' }, { key: 20, title: 'Sweet-3' }, { key: 21, title: 'Sweet-4' }]
             },
+            {
+                key: 6,
+                title: 'Sweets',
+                data: [{ key: 23, title: 'Sweet-1' }, { key: 24, title: 'Sweet-2' }, { key: 25, title: 'Sweet-3' }, { key: 26, title: 'Sweet-4' }]
+            },
 
 
         ])
