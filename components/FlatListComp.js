@@ -37,6 +37,13 @@ const DATA = [
     price: "$10",
     image: require('../assets/img2.jpeg')
   },
+  {
+    id: 6,
+    title: 'New Simple Burger',
+    rating: 4.5,
+    price: "$20",
+    image: require('../assets/img3.jpeg')
+  },
 ];
 
 const FlatListComp = () => {
