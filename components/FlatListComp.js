@@ -1,52 +1,22 @@
-import React from 'react'
+import React, { useEffect,useState } from 'react'
 import { View, FlatList, Text, Image } from 'react-native'
+import {getDatabase,ref,onValue} from 'firebase/database';
+import app from '../firebase-config.js'
 
-const DATA = [
-  {
-    id: 1,
-    title: 'Morten Lava Burger',
-    rating: 5,
-    price: "$10",
-    image: require('../assets/img1.jpeg')
-  },
-  {
-    id: 2,
-    title: 'Molten Lava Burger',
-    rating: 5,
-    price: "$10",
-    image: require('../assets/img2.jpeg')
-  },
-  {
-    id: 3,
-    title: 'Crispy Chicken Burger',
-    rating: 5,
-    price: "$10",
-    image: require('../assets/img3.jpeg')
-  },
-  {
-    id: 4,
-    title: 'Grilled Chicken Burger',
-    rating: 5,
-    price: "$10",
-    image: require('../assets/img4.jpeg')
-  },
-  {
-    id: 5,
-    title: 'Simple Burger',
-    rating: 5,
-    price: "$10",
-    image: require('../assets/img2.jpeg')
-  },
-  {
-    id: 6,
-    title: 'New Simple Burger',
-    rating: 4.5,
-    price: "$20",
-    image: require('../assets/img3.jpeg')
-  },
-];
 
 const FlatListComp = () => {
+  const [DATA, setDATA] = useState();
+  useEffect(() => {
+    const db = getDatabase(app);
+    const dbRef = ref(db, 'fastfood');
+    console.log('Reciving data from firebase');
+    onValue(dbRef, (snapshot) => {
+      let data = snapshot.val();
+      let dataArr = Object.values(data);
+      setDATA(dataArr);
+      console.log('Data received from firebase');
+    });
+  },[]);
   return (
     <FlatList
       data={DATA}
@@ -56,13 +26,13 @@ const FlatListComp = () => {
           <View style={{ flex: 0.2 }}>
             <View style={{ flex: 1, flexDirection: 'row' }}>
               <Text style={{ flex: 0.50, fontSize: 20, fontWeight: "bold", color: 'yellow' }}>	&#10084;
-                <Text style={{ color: 'black', fontSize: 15 }}>{item.rating}</Text>
+                <Text style={{ color: 'black', fontSize: 15 }}></Text>
               </Text>
               <Text style={{ flex: 0.50, fontSize: 25, fontWeight: "bold", marginLeft: 115 }}>&#9734;</Text>
             </View>
           </View>
           <View style={{ flex: 0.6, width: 200 }}>
-            <Image source={item.image} style={{ width: 120, height: 120, alignSelf: "center" }} />
+            <Image source={{uri:item.image}} style={{ width: 120, height: 120, alignSelf: "center" }} />
           </View>
           <View style={{ flex: 0.2 }}>
             <View style={{ flex: 1, alignItems: "center" }}>
@@ -76,7 +46,7 @@ const FlatListComp = () => {
           </View>
         </View>
       )}
-      keyExtractor={item => item.id}
+      keyExtractor={item => item.key}
     />
   )
 }
