@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, Button, FlatList, TextInput } from 'react-native';
 import FlatListComp from './components/FlatListComp';
 import SectionListComp from './components/SectionListComp';
-import { getDatabase, ref, onValue, set, push } from 'firebase/database';
+import { getDatabase, ref, update, set, push } from 'firebase/database';
 import app from './firebase-config.js';
 
 
@@ -29,7 +29,17 @@ export default function App() {
     setLoading(false);
   };
 
-
+  const handleUpdateItem = () => {
+    const db = getDatabase();
+    const itemRef = ref(db, `fastfood/${key}`);
+    const updates = {
+      price: parseFloat(price),
+      description: description
+    };
+    update(itemRef, updates)
+      .then(() => console.log('Item updated'))
+      .catch(error => console.error(error));
+  };
   return (
     <View style={{ flex: 1 }}>
       <View style={{ flex: 0.10 }}>
@@ -44,6 +54,7 @@ export default function App() {
         <TextInput onChangeText={text => setDescription(text)} style={{ height: 40, borderColor: 'gray', borderWidth: 1, margin: 7 }} />
         {loading ? <Text>Loading...</Text> : null}
         <Button onPress={addFood} title="Add" />
+
       </View>
       <View style={{ flex: 0.40 }}>
         <FlatListComp />
