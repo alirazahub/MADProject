@@ -29,9 +29,9 @@ export default function App() {
     setLoading(false);
   };
 
-  const handleUpdateItem = () => {
+  const handleUpdateItem = (id) => {
     const db = getDatabase();
-    const itemRef = ref(db, `fastfood/${key}`);
+    const itemRef = ref(db, `fastfood/${id}`);
     const updates = {
       price: parseFloat(price),
       description: description
