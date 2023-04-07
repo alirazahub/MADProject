@@ -3,7 +3,8 @@ import { View, Text, Button, FlatList, TextInput } from 'react-native';
 import FlatListComp from './components/FlatListComp';
 import SectionListComp from './components/SectionListComp';
 import { getDatabase, ref, update, set, push } from 'firebase/database';
-import app from './firebase-config.js';
+import {app,db} from './firebase-config.js';
+import { doc, addDoc, getDocs, getDoc, updateDoc, deleteDoc,collection } from 'firebase/firestore';
 
 
 
@@ -13,19 +14,18 @@ export default function App() {
   const [price, setPrice] = useState('');
   const [description, setDescription] = useState('');
   const [loading, setLoading] = useState(false);
-  const addFood = () => {
+  const addFood = async() => {
     setLoading(true);
-    const db = getDatabase(app);
-    const dbRef = ref(db, 'fastfood');
-
-    const newItemRef = push(dbRef);
-    set(newItemRef, {
-      key: 2,
-      title: title,
-      price: price,
-      description: description,
-    });
-
+    try {
+      const docRef = await addDoc(collection(db, "fastfood"), {
+        title: title,
+        price: price,
+        description: description
+      });
+      console.log("Document written with ID: ", docRef.id);
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
     setLoading(false);
   };
 

@@ -1,22 +1,20 @@
-import React, { useEffect,useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { View, FlatList, Text, Image } from 'react-native'
-import {getDatabase,ref,onValue} from 'firebase/database';
-import app from '../firebase-config.js'
+import { collection, getDocs } from "firebase/firestore";
+import { app, db } from '../firebase-config.js'
 
 
 const FlatListComp = () => {
   const [DATA, setDATA] = useState();
   useEffect(() => {
-    const db = getDatabase(app);
-    const dbRef = ref(db, 'fastfood');
-    console.log('Reciving data from firebase');
-    onValue(dbRef, (snapshot) => {
-      let data = snapshot.val();
-      let dataArr = Object.values(data);
-      setDATA(dataArr);
-      console.log('Data received from firebase');
-    });
-  },[]);
+    const getData = async () => {
+      const querySnapshot = await getDocs(collection(db, "fastfood"));
+      const data = querySnapshot.docs.map(doc => doc.data());
+      setDATA(data);
+    }
+
+    getData();
+  }, []);
   return (
     <FlatList
       data={DATA}
@@ -32,7 +30,7 @@ const FlatListComp = () => {
             </View>
           </View>
           <View style={{ flex: 0.6, width: 200 }}>
-            <Image source={{uri:item.image}} style={{ width: 120, height: 120, alignSelf: "center" }} />
+            <Image source={{ uri: item.image }} style={{ width: 120, height: 120, alignSelf: "center" }} />
           </View>
           <View style={{ flex: 0.2 }}>
             <View style={{ flex: 1, alignItems: "center" }}>
